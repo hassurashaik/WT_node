@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <input type="text" id="inputTextInput" placeholder="Add new inputText...">
+    <button onclick="Add()">Add</button>
+    <ul id="inputTextList" style="list-style-type:none;"></ul>
+
+  </div>
+
+  <script>
+  function Add() {
+  var input = document.getElementById('inputTextInput');
+  var inputText = input.value;
+  input.value = '';
+
+  if (inputText === '') return;
+
+  var ul = document.getElementById('inputTextList');
+  var li = document.createElement('li');
+  
+ 
+  var checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.addEventListener('change', function() {
+    if (checkbox.checked) {
+      li.style.textDecoration = 'line-through'; 
+    } else {
+      li.style.textDecoration = 'none'; 
+    }
+  });
+
+
+  var deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', function() {
+    ul.removeChild(li);
+  });
+
+  li.textContent = inputText;
+  li.appendChild(checkbox);
+  li.appendChild(deleteButton);
+  ul.appendChild(li);
+}
+
+  </script>
+</body>
+</html>
